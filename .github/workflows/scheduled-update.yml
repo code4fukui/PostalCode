@@ -1,4 +1,4 @@
-name: Scheduled fetch
+name: Scheduled 
 
 on:
   schedule:
