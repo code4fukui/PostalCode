@@ -1,8 +1,9 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"/>
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>PostalCode.js - 郵便番号から住所</title>
 </head><body>
 
 <div>
-<h1>郵便番号から住所 - 郵便番号</h1>
+<h1>PostalCode.js - 郵便番号から住所</h1>
 
 〒<input type=text id=postalcode><br>
 ↓<br>
@@ -13,10 +14,10 @@
 <a href="https://github.com/code4fukui/PostalCode/">src on GitHub</a>
 
 <script type="module">
-import { PostalCode } from "https://code4sabae.github.io/PostalCode/PostalCode.js";
+import { PostalCode } from "./PostalCode.js";
 
-postalcode.onchange = async () => {
-  const code = this.value;
+postalcode.onkeyup = postalcode.onchange = async () => {
+  const code = postalcode.value;
   const json = await PostalCode.decode(code);
   result.value = JSON.stringify(json, null, 2);
 };
