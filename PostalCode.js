@@ -105,7 +105,6 @@ class PostalCode {
     //return await fromZipCode(code);
     const zip = await fromZipCode1(code);
 
-    console.log(zip, zip.lgcode)
     if (!zip || !zip.lgcode) {
       return null;
     }
@@ -115,7 +114,8 @@ class PostalCode {
     res.lgcode = zip.lgcode;
     if (city.length == 3) {
       res.pref = city[0];
-      res.city = city[1] + city[2];
+      const city1 = city[1] == "特別区部" ? "" : city[1];
+      res.city = city1 + city[2];
     } else {
       res.pref = city[0];
       res.city = city[1];
