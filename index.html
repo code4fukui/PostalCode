@@ -4,20 +4,20 @@
 <div>
 <h1>郵便番号から住所 - 郵便番号</h1>
 
-〒<input type=text id=zipcode><br>
+〒<input type=text id=postalcode><br>
 ↓<br>
 <textarea id="result" style="width:90vw;height:20em;"></textarea>
 </div>
 
 <hr>
-<a href=https://github.com/code4sabae/zipcode-japan-es>src on GitHub</a>
+<a href="https://github.com/code4fukui/PostalCode/">src on GitHub</a>
 
 <script type="module">
-import { fromZipCode } from "https://code4sabae.github.io/zipcode-japan-es/zipcode.mjs"
+import { PostalCode } from "https://code4sabae.github.io/PostalCode/PostalCode.js";
 
-zipcode.onkeyup = zipcode.onchange = async function () {
+postalcode.onchange = async () => {
   const code = this.value;
-  const json = await fromZipCode(code);
+  const json = await PostalCode.decode(code);
   result.value = JSON.stringify(json, null, 2);
 };
 </script>

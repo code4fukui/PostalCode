@@ -1,11 +1,11 @@
-import IMIMojiConverter from "https://code4sabae.github.io/imi-moji-converter-es/IMIMojiConverter.mjs";
-import csvutil from "https://taisukef.github.io/util/util.mjs";
+import { CSV } from "https://js.sabae.cc/CSV.js";
 
 const zipcache = {};
 const fromZipCode = async (code) => {
   let s = code;
   if (typeof s === "string") {
-    s = IMIMojiConverter.toHalfWidth(s).replace(/[\D]/g, "");
+    //s = IMIMojiConverter.toHalfWidth(s).replace(/[\D]/g, "");
+    s = s.replace(/[\D]/g, "");
     if (s.length < 7) {
       const n = parseInt(s);
       s = isNaN(n) ? "0000000" : n + "0000000";
@@ -33,11 +33,11 @@ const fromZipCode = async (code) => {
       const path = url.substring("file://".length, url.lastIndexOf("/") + 1);
       data = await Deno.readTextFile(path + fn);
     } else {
-      const path = "https://code4sabae.github.io/zipcode-japan-es/";
+      const path = "https://code4fukui.github.io/PostalCode/";
       data = await (await fetch(path + fn)).text();
     }
     const json = {};
-    const csv = csvutil.decodeCSV(data);
+    const csv = CSV.decode(data);
     for (const d of csv) {
       const n = parseInt(d[0]);
       if (!json[n]) {
@@ -60,4 +60,10 @@ const fromZipCode = async (code) => {
   });
 };
 
-export { fromZipCode };
+class PostalCode {
+  static async decode(code) {
+    return fromZipCode(code);
+  }
+}
+
+export { PostalCode };
