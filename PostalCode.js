@@ -32,14 +32,13 @@ const fromZipCode = async (code) => {
     ) {
       const url = import.meta.url;
       const path = url.substring("file://".length, url.lastIndexOf("/") + 1);
-      data = await Deno.readTextFile(path + fn);
+      data = await CSV.fetch(path + fn);
     } else {
       const path = PostalCode.url;
-      console.log(path);
-      data = await (await fetch(path + fn)).text();
+      data = await CSV.fetch(path + fn);
     }
     const json = {};
-    const csv = CSV.decode(data);
+    const csv = data; // CSV.decode(data);
     for (const d of csv) {
       const n = parseInt(d[0]);
       if (!json[n]) {
