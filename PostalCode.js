@@ -34,7 +34,8 @@ const fromZipCode = async (code) => {
       const path = url.substring("file://".length, url.lastIndexOf("/") + 1);
       data = await Deno.readTextFile(path + fn);
     } else {
-      const path = "https://code4fukui.github.io/PostalCode/";
+      const path = PostalCode.url;
+      console.log(path);
       data = await (await fetch(path + fn)).text();
     }
     const json = {};
@@ -101,6 +102,11 @@ const fromZipCode1 = async (code) => {
 };
 
 class PostalCode {
+  static url = "https://code4fukui.github.io/PostalCode/"; // default
+  static setDataPath(url) {
+    PostalCode.url = url;
+  }
+
   static async decode(code) {
     //return await fromZipCode(code);
     const zip = await fromZipCode1(code);
