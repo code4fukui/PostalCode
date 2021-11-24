@@ -114,7 +114,6 @@ class PostalCode {
       return null;
     }
     const city = LGCode.decode(LGCode.normalize(zip.lgcode));
-    console.log(city)
     const res = {};
     res.lgcode = zip.lgcode;
     if (city.length == 3) {
