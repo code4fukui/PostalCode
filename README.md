@@ -1,6 +1,6 @@
 # PostalCode / 郵便番号ESモジュール
 
-KEN_ALL.ZIPをデータソースとして使った、郵便番号データを[地方公共団体コード](https://github.com/code4sabae/lgcode)と町名、町名のよみへ変換するESモジュールです。  
+[日本郵便株式会社](https://www.post.japanpost.jp/)の[KEN_ALL.ZIP](https://www.post.japanpost.jp/zipcode/download.html)をデータソースとして使った、郵便番号データを[地方公共団体コード](https://github.com/code4sabae/lgcode)と町名、町名のよみへ変換するESモジュールです。  
 This ES module converts Japanese zip codes to addresses. (Local government codes and town names.)  
 
 ## ブラウザ上での使用例
