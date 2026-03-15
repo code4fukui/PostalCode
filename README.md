@@ -1,4 +1,7 @@
 # PostalCode
+
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 This is an ES module that converts Japanese zip codes to addresses, including local government codes and town names.
 
 ## Demo
