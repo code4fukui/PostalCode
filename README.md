@@ -36,4 +36,4 @@ Output:
 Uses the [KEN_ALL.ZIP](https://www.post.japanpost.jp/zipcode/download.html) data from Japan Post.
 
 ## License
-MIT License
+MIT License — see [LICENSE](LICENSE).
